@@ -1,24 +1,76 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="estilos/style.css">
-    <title>Emulador Mobile</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+  <link rel="stylesheet" href="estilos/style.css" />
+  <title>Emulador Mobile</title>
 </head>
+
 <body>
-    <main>
-        <section id="telefone">
-            <iframe src="home.html" name="tela" id="tela" frameborder="0"></iframe>
-        </section>
-        <section id="redes-sociais">
-            <a href="home.html" target="tela"><img src="imagens/logo-home.jpg" alt="Home"></a> <br>
-            <a href="youtube.html" target="tela"><img src="imagens/logo-youtube.jpg" alt="YouTube"></a> <br>
-            <a href="github.html" target="tela"><img src="imagens/logo-github.jpg" alt="GitHub"></a> <br>
-            <a href="instagram.html" target="tela"><img src="imagens/logo-instagram.jpg" alt="Instagram"></a> <br>
-            <a href="facebook.html" target="tela"><img src="imagens/logo-facebook.jpg" alt="Facebook"></a>
-        </section>
-    </main>
+  <main class="app">
+    <section id="telefone" class="telefone" aria-label="Emulador de telefone">
+      <iframe
+        src="home.html"
+        name="tela"
+        id="tela"
+        class="tela"
+        title="Tela do emulador"
+      ></iframe>
+    </section>
+
+    <nav id="redes-sociais" class="redes" aria-label="Redes sociais">
+      <ul class="redes__lista">
+        <li class="redes__item">
+          <a class="redes__link" href="home.html" target="tela" aria-label="Abrir Home">
+            <img class="redes__icone" src="imagens/logo-home.jpg" alt="Home" />
+          </a>
+        </li>
+
+        <li class="redes__item">
+          <a class="redes__link" href="youtube.html" target="tela" aria-label="Abrir YouTube">
+            <img class="redes__icone" src="imagens/logo-youtube.jpg" alt="YouTube" />
+          </a>
+        </li>
+
+        <li class="redes__item">
+          <a class="redes__link" href="github.html" target="tela" aria-label="Abrir GitHub">
+            <img class="redes__icone" src="imagens/logo-github.jpg" alt="GitHub" />
+          </a>
+        </li>
+
+        <li class="redes__item">
+          <a class="redes__link" href="instagram.html" target="tela" aria-label="Abrir Instagram">
+            <img class="redes__icone" src="imagens/logo-instagram.jpg" alt="Instagram" />
+          </a>
+        </li>
+
+        <li class="redes__item">
+          <a class="redes__link" href="facebook.html" target="tela" aria-label="Abrir Facebook">
+            <img class="redes__icone" src="imagens/logo-facebook.jpg" alt="Facebook" />
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </main>
+
+  <script>
+    // Realça o ícone ativo (melhora UX; opcional)
+    const links = document.querySelectorAll('.redes__link');
+
+    function setActive(link) {
+      links.forEach((l) => l.classList.remove('is-active'));
+      link.classList.add('is-active');
+    }
+
+    links.forEach((link) => {
+      link.addEventListener('click', () => setActive(link));
+    });
+
+    // Define Home como ativo no carregamento
+    const homeLink = document.querySelector('.redes__link[href="home.html"]');
+    if (homeLink) setActive(homeLink);
+  </script>
 </body>
 </html>

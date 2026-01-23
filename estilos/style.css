@@ -1,60 +1,96 @@
 @charset "UTF-8";
 
+/* Base */
 * {
-    margin: 0px;
-    padding: 0px;
-    font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 html, body {
-    height: 100vh;
-    width: 100vw;
+  height: 100%;
 }
 
 body {
-    background: url(../imagens/fundo-madeira.jpg) no-repeat top center;
-    background-size: cover;
-    background-attachment: fixed;
+  min-height: 100vh;
+  background: url(../imagens/fundo-madeira.jpg) no-repeat top center;
+  background-size: cover;
+  background-attachment: fixed;
 }
 
-main {
-    height: 100vh;
-    position: relative;
+/* Layout principal */
+.app {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;      /* centraliza vertical */
+  justify-content: center;  /* centraliza horizontal */
+  position: relative;
 }
 
-section#telefone {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    height: 627px;
-    width: 311px;
-    background: url(../imagens/frame-iphone.png) no-repeat;
+/* Telefone */
+.telefone {
+  height: 627px;
+  width: 311px;
+  background: url(../imagens/frame-iphone.png) no-repeat;
+  background-size: contain;
+  position: relative;
 }
 
-iframe#tela {
-    position: relative;
-    top: 80px;
-    left: 22px;
-    width: 267px;
-    height: 471px;
+.tela {
+  position: absolute;
+  top: 80px;
+  left: 22px;
+  width: 267px;
+  height: 471px;
+  border: 0;
 }
 
-section#redes-sociais {
-    text-align: right;
+/* Redes sociais (menu lateral) */
+.redes {
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  transform: translateY(-50%);
 }
 
-section#redes-sociais img {
-    width: 50px;
-    border-radius: 50%;
-    margin: 10px;
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.507);
-    box-sizing: border-box;
+.redes__lista {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
-section#redes-sociais img:hover {
-    border: 2px solid rgba(255, 255, 255, 0.575);
-    transform: translate(-3px, -3px);
-    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.616);
-    transition: transform 0.5s, border 0.5s;
+.redes__link {
+  display: block;
+}
+
+.redes__icone {
+  width: 50px;
+  border-radius: 50%;
+  display: block;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+  transition: transform 0.25s, box-shadow 0.25s, outline-color 0.25s;
+  outline: 0 solid rgba(255, 255, 255, 0.7);
+  outline-offset: 2px;
+}
+
+.redes__link:hover .redes__icone {
+  transform: translate(-3px, -3px);
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.62);
+  outline-width: 2px;
+}
+
+.redes__link.is-active .redes__icone {
+  outline-width: 2px;
+}
+
+/* Responsividade básica */
+@media (max-height: 700px) {
+  .telefone {
+    transform: scale(0.85);
+  }
+  .redes__icone {
+    width: 42px;
+  }
 }
